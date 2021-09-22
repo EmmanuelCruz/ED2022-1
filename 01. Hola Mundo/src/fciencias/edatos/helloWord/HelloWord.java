@@ -1,4 +1,4 @@
-package fciencias.edatos.HelloWord;
+package fciencias.edatos.helloWord;
 
 /**
  * Ejemplo de programa con ANT.
@@ -9,6 +9,6 @@ package fciencias.edatos.HelloWord;
 public class HelloWord{
 
     public static void main(String[] args) {
-        
+        System.out.println("Hello World!!!");
     }
 }

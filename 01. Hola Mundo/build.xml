@@ -16,28 +16,32 @@ Contiene los siguientes comandos:
     <delete dir="doc" />
   </target>
 
+  <!-- Genera todos los archivos .class -->
   <target name="build" >
     <mkdir dir="build/classes" />
     <javac srcdir="src" destdir="build/classes" debug="true" debuglevel="lines,vars,source" >
     </javac>
   </target>
 
+  <!-- Generar el archivo ejecutable del proyecto -->
   <target name="jar" >
     <antcall target="build" />
     <mkdir dir="build/jar" />
     <jar destfile="build/jar/HelloWord.jar" basedir="build/classes" >
       <manifest >
 	<attribute name="DependencyFinder" value="main" />
-	<attribute name="Main-Class" value="fciencias.edatos.HelloWord.HelloWord" />
+	<attribute name="Main-Class" value="fciencias.edatos.helloWord.HelloWord" />
       </manifest >
     </jar >
   </target>
 
+  <!-- Ejecuta el proyecto -->
   <target name="run" >
     <java jar="build/jar/HelloWord.jar" fork="true" >
     </java>
   </target >
 
+  <!-- Genera la documentacion -->
   <target name="doc" >
     <mkdir dir="doc" />
     <javadoc sourcepath="src" destdir="doc" access="private" windowtitle="HelloWord" doctitle="HelloWord" author="true" version="true" >
