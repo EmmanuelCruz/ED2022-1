@@ -31,7 +31,7 @@ Contiene los siguientes comandos:
       <manifest >
 	<attribute name="DependencyFinder" value="main" />
 	<!-- TODO SET MAIN CLASS -->
-	<attribute name="Main-Class" value="fciencias.edatos.complejidad.Averager" />
+	<attribute name="Main-Class" value="fciencias.edatos.complejidad.PositionFindex" />
       </manifest >
     </jar >
   </target>
