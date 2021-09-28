@@ -13,8 +13,15 @@ Material y ejemplos de apoyo para el laboratorio de Estructuras de Datos 2022-1.
 
 código de las clases de laboratorio de Estructuras de Datos
 
-0. [Instalación](https://github.com/EmmanuelCruz/ED2022-1/tree/master/00.%20Instalaci%C3%B3n): Documentos de instalación de ANT y Java.
 1. [Hola Mundo](https://github.com/EmmanuelCruz/ED2022-1/tree/master/01.%20Hola%20Mundo): Ejemplo de Hola Mundo en ANT.
+2. Complejidad: Ejemplos de complejidad de forma práctica con cálculo de milisegundos.
+3. Genéricos e Iteradores: Ejemplo de clases genéricas e implementación de un iterador.
+
+----
+
+## Instalación
+
+Documentos de instalación de ANT y Java. Los puedes encontrar [aquí](https://github.com/EmmanuelCruz/ED2022-1/tree/master/Instalaci%C3%B3n)
 
 ----
 
