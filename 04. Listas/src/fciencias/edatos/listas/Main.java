@@ -8,6 +8,18 @@ package fciencias.edatos.listas;
 public class Main{
 
     public static void main(String[] args) {
-        System.out.println("Funcionando");
+        SimpleList<String> lista = new SimpleList<>();
+
+        lista.add(0, "Hola");
+        lista.add(1, "mundo");
+        lista.add(1, "Himno nacional");
+        lista.add(1, "Ojos color sol");
+        lista.add(2, "Down in a hole");
+        lista.add(1, "Si no le contesto");
+        lista.add(4, "Extasis");
+
+        System.out.print("Longitud de la lista: " + lista.size() + "\n");
+
+        System.out.print(lista);
     }
 }
