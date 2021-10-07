@@ -16,6 +16,7 @@ código de las clases de laboratorio de Estructuras de Datos
 1. Hola Mundo: Ejemplo de Hola Mundo en ANT.
 2. Complejidad: Ejemplos de complejidad de forma práctica con cálculo de milisegundos.
 3. Genéricos e Iteradores: Ejemplo de clases genéricas e implementación de un iterador.
+4. Listas: Introducción a la implementación de una lista ligada.
 
 ----
 
