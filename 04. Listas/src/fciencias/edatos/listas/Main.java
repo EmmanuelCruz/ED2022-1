@@ -1,5 +1,7 @@
 package fciencias.edatos.listas;
 
+import java.util.Scanner;
+
 /**
  * Clase para poner a prueba las operaciones de la lista.
  * @version 1.0 Octubre 2021.
@@ -10,16 +12,36 @@ public class Main{
     public static void main(String[] args) {
         SimpleList<String> lista = new SimpleList<>();
 
-        lista.add(0, "Hola");
-        lista.add(1, "mundo");
-        lista.add(1, "Himno nacional");
-        lista.add(1, "Ojos color sol");
-        lista.add(2, "Down in a hole");
-        lista.add(1, "Si no le contesto");
-        lista.add(4, "Extasis");
+        Scanner sc = new Scanner(System.in);
 
-        System.out.print("Longitud de la lista: " + lista.size() + "\n");
+        do{
+            System.out.println("[1] Agrega\n"+
+            "[2] Longitud\n"+
+            "[3] Muestra\n"+
+            "[4] Salir\n"+
+            "Elige una opcion: ");
 
-        System.out.print(lista);
+            int opcion = sc.nextInt();
+
+            switch(opcion){
+                case 1:
+                    int i = sc.nextInt();
+                    sc.nextLine();
+                    String s = sc.nextLine();
+                    lista.add(i, s);
+                    break;
+                case 2:
+                    System.out.println("La longitud es "+ lista.size());
+                    break;
+                case 3:
+                    System.out.println(lista);
+                    break;
+                case 4:
+                    return;
+                default:
+                    System.out.println("Opción inválida");
+            }
+        } while(true);
+    
     }
 }
