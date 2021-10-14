@@ -5,7 +5,7 @@ import java.util.EmptyStackException;
 /**
 * TDA para pilas.
 * @author Emmanuel Cruz Hernández.
-* @version 2.0 Junio 2021.
+* @version 2.0 Octubre 2021.
 * @since Estructuras de datos 2021-2.
 */
 public interface TDAStack<T>{
