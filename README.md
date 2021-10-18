@@ -18,6 +18,7 @@ código de las clases de laboratorio de Estructuras de Datos
 3. Genéricos e Iteradores: Ejemplo de clases genéricas e implementación de un iterador.
 4. Listas: Introducción a la implementación de una lista ligada.
 5. Pilas: Implementación de una pila basada en una lista y aplicación (balanceo de paréntesis).
+6. Backtraking: Implementación del problema de las _n_ reinas con Backtraking y pilas.
 
 ----
 
