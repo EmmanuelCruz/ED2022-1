@@ -32,7 +32,8 @@ public class QueenProblemSolver{
 		 * @param n la longitud del tablero.
 		 */
 		public Board(int[] board, int n){
-
+			this.board = board;
+			this.n = n;
 		}
 
 		/**
@@ -41,9 +42,10 @@ public class QueenProblemSolver{
 		 */
 		public boolean isSolution(){
 			// Debe ser de longitud n
+			if(board.length != n)
+				return false;
 			// Debe ser extendible
-
-			return false;
+			return isExtensible();
 		}
 
 		/**
@@ -51,12 +53,25 @@ public class QueenProblemSolver{
 		 * @return true si el tablero se puede extender, false en otro caso.
 		 */
 		public boolean isExtensible(){
-			// Si ya se visitaron n -> ?????
-			
-			// No debe haber en la misma columna
-			// No debe haber diagonales
-			// No debe haber diagonales invertidas
-			return false;
+			// Si ya se visitaron n -> significa que no se puede extender
+			if(visited.size() == n)
+				return false;
+
+			int last = board[board.length-1];
+			for(int i = board.length-2, counter = 1; i >= 0; i--, counter++){
+				// No debe haber en la misma columna
+				if(last == board[i])
+					return false;
+
+				// No debe haber diagonales
+				if(last == board[i]+counter)
+					return false;
+
+				// No debe haber diagonales invertidas
+				if(last == board[i]-counter)
+					return false;
+			}
+			return true;
 		}
 
 		/**
@@ -65,7 +80,15 @@ public class QueenProblemSolver{
 		 * Este resultado representa el tablero extendido.
 		 */
 		public Board extend(){
-			return null;
+			int[] newBoard = Arrays.copyOf(board, board.length+1);
+			Random rn = new Random();
+			int random = rn.nextInt(n);
+			while(visited.contains(random)){
+				random = rn.nextInt(n);
+			}
+			newBoard[newBoard.length-1] = random;
+			visited.add(0, random);
+			return new Board(newBoard, n);
 		}
 
 		@Override
@@ -73,7 +96,7 @@ public class QueenProblemSolver{
 			String rep = "";
 			for(int i = 0; i < board.length; i++){
 				rep += "|";
-				for(int j = 0; j < 8; j++)
+				for(int j = 0; j < n; j++)
 					rep += board[i]==j ? " R " : " - ";
 				rep += "|\n";
 			}
@@ -87,10 +110,30 @@ public class QueenProblemSolver{
 	 * @return una solución al problema de las n reinas.
 	 */
 	public Board solve(int n){
-		return null;
+		// Variables iniciales
+		int[] initial = new int[1];
+		Random rn = new Random();
+		initial[0] = rn.nextInt(n);
+		Board actual = new Board(initial, n);
+		TDAStack<Board> stack = new Stack<>();
+		stack.push(actual);
+
+		// Backtraking
+		while(!actual.isSolution()){
+			System.out.println(actual);
+			if(actual.isExtensible()){
+				stack.push(actual);
+				actual = actual.extend();
+			} else {
+				actual = stack.pop();
+			}
+		}
+
+		return actual;
 	}
 
 	public static void main(String[] args) {
-		
+		QueenProblemSolver q = new QueenProblemSolver();
+		System.out.println(q.solve(12));
 	}
 }
