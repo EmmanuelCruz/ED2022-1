@@ -21,6 +21,7 @@ código de las clases de laboratorio de Estructuras de Datos
 6. Backtraking: Implementación del problema de las _n_ reinas con Backtraking y pilas.
 7. Colas: Implementación de una cola basada en una lista y aplicación (comprador que atiende un servicio).
 8. Ordenamientos: Implementación de InsertionSort, SelectionSort, MergeSort.
+9. Búsqueda binaria: Implementación de búsqueda binaria para colecciones ordenadas.
 
 ----
 
