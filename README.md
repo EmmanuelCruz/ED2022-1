@@ -20,6 +20,7 @@ código de las clases de laboratorio de Estructuras de Datos
 5. Pilas: Implementación de una pila basada en una lista y aplicación (balanceo de paréntesis).
 6. Backtraking: Implementación del problema de las _n_ reinas con Backtraking y pilas.
 7. Colas: Implementación de una cola basada en una lista y aplicación (comprador que atiende un servicio).
+8. Ordenamientos: Implementación de InsertionSort, SelectionSort, MergeSort.
 
 ----
 
