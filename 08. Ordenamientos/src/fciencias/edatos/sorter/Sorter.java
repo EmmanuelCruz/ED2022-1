@@ -18,19 +18,36 @@ public class Sorter{
 	 * @param i el índice del primer elemento a cambiar.
 	 * @param j el índice del segundo elemento a cambiar.
 	 */
-	private static void swap(int[] arr, int i, int j){}
+	private static void swap(int[] arr, int i, int j){
+		int tmp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = tmp;
+	}
 
 	/**
 	 * Ordena un arreglo de forma ascendente con insertion sort.
 	 * @param arr el arreglo a ordenar.
 	 */
-	public static void insertionSort(int[] arr){}
+	public static void insertionSort(int[] arr){
+		for(int i = 0; i < arr.length-1; i++)
+			for(int j = i+1; j>0 && arr[j-1]>arr[j]; j--)
+				swap(arr, j, j-1);
+	}
 
 	/**
 	 * Ordena un arreglo de forma ascendente con selection sort.
 	 * @param arr el arreglo a ordenar.
 	 */
-	public static void selectionSort(int[] arr){}
+	public static void selectionSort(int[] arr){
+		for(int i = arr.length-1; i > 0 ; i--){
+			int max = 0;
+			for(int j = 1; j<=i; j++){
+				if(arr[j] > arr[max])
+					max = j;
+			}
+			swap(arr, max, i);
+		}
+	} // El peor caso es tener el arreglo ordenado descendentemente
 
 	/**
 	 * Ordena un arreglo de forma ascendente con merge sort.
@@ -69,5 +86,21 @@ public class Sorter{
 		return res;
 	}
 
-	public static void main(String[] args) {}
+	public static void main(String[] args) {
+		int[] arr1 = generate(10000, 15);
+		//System.out.println("No ordenado: " + Arrays.toString(arr1));
+		long inicio = System.currentTimeMillis();
+		selectionSort(arr1);
+		long fin = System.currentTimeMillis();
+
+		System.out.println("Ordenado con selectionSort tardó: " + (fin - inicio) + " milisegundos");
+
+		int[] arr2 = generate(10000, 15);
+
+		inicio = System.currentTimeMillis();
+		insertionSort(arr2);
+		fin = System.currentTimeMillis();
+
+		System.out.println("Ordenado con insertionSort tardó: " + (fin - inicio) + " milisegundos");
+	}
 }
