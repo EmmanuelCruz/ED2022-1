@@ -7,7 +7,7 @@ package fciencias.edatos.binarySearchTree;
 * @version 3.0 Noviembre 2021 (Anterior 2.0 Julio 2021).
 * @since Estructuras de Datos 2022-1.
 */
-public interface TDABinarySearchTree<K, T>{
+public interface TDABinarySearchTree<K extends Comparable, T>{
 
 	/**
 	* Recupera el objeto con clave k.

@@ -6,7 +6,7 @@ package fciencias.edatos.binarySearchTree;
 * @version 3.0 Noviembre 2021 (Anterior 2.0 Julio 2021).
 * @since Estructuras de Datos 2022-1.
 */
-public class BinarySearchTree<K, T> implements TDABinarySearchTree<K, T>{
+public class BinarySearchTree<K extends Comparable, T> implements TDABinarySearchTree<K, T>{
 	
 	/**
 	 * Nodo para un árbol binario de búsqueda.
@@ -41,9 +41,32 @@ public class BinarySearchTree<K, T> implements TDABinarySearchTree<K, T>{
 		}
 	}
 
+	/** Root */
+	private BinaryNode root;
+
 	@Override
 	public T retrieve(K k){
-		return null;
+		BinaryNode node = retrieve(root, k);
+		if(node == null)
+			return null;
+		return node.element;
+	}
+
+	private BinaryNode retrieve(BinaryNode actual, K k){
+		// No se encuentra el elemento
+		if(actual == null)
+			return null;
+
+		// Si encontramos el elemento
+		if(actual.key.compareTo(k) == 0)
+			return actual;
+
+		// Comparamos los elementos
+		if(k.compareTo(actual.key) < 0){ // Verificamos en la izquierda
+			return retrieve(actual.left, k);
+		} else { // Verificar en la derecha
+			return retrieve(actual.rigth, k);
+		}
 	}
 
 	@Override
