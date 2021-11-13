@@ -35,6 +35,7 @@ Descripción y recursos para las prácticas
 * Práctica 2: Listas
 * Práctica 3: Pilas y colas
 * Práctica 4: Algoritmos de ordenamiento
+* Práctica 5: Árboles Binarios de Búsqueda
 
 ----
 
