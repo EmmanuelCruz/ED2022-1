@@ -6,7 +6,7 @@ package fciencias.edatos.binarySearchTree;
 * @version 3.0 Noviembre 2021 (Anterior 2.0 Julio 2021).
 * @since Estructuras de Datos 2022-1.
 */
-public class BinarySearchTree<K extends Comparable, T> implements TDABinarySearchTree<K, T>{
+public class BinarySearchTree<K extends Comparable<K>, T> implements TDABinarySearchTree<K, T>{
 	
 	/**
 	 * Nodo para un árbol binario de búsqueda.
@@ -70,11 +70,39 @@ public class BinarySearchTree<K extends Comparable, T> implements TDABinarySearc
 	}
 
 	@Override
-	public void insert(T e, K k){}
-
+	public void insert(T e, K k){
+		// Si es vacío entonces insertamos al nuevo elemento como la raíz del árbol
+		// Crear un nodo iterador que comience en la raíz
+		// Invocar el método insert de tres parámetros
+	}
+	
+	private void insert(BinaryNode actual, T e, K k){
+		// Comparamos las claves: la clave de actual con k. Con compareTo
+		// Si la clave es menor verificamos que el hijo izquierdo no sea null
+		// * Si es null insertamos el nuevo elemento como hijo izquierdo del actual. Si no recursión
+		// Si la clave es mayor
+		// * Si es null insertamos el nuevo elemento como hijo derecho del actual. Si no recursión
+	}
 
 	@Override
 	public T delete(K k){
+		// retieve(root, k)
+		// Si ese resultado es null -> regresar null
+		// Crear una variable que almacene el elemento en retrieve
+
+		// Cuando tiene dos hijos
+		// Buscamos al maximo de los mínimos
+		// hacemos un swap actual con el maximo de los mínimos
+		// eliminar el nodo con el que se hizo swap
+
+		// Cuando no tiene hijos
+		// Verificar si es hijo izquierdo o es hijo derecho
+		// Si es hijo izquiero hacer null el izquierdo del padre
+		// Si es hijo derecho hacer null el derecho del padre
+		
+		// Cuando solo tiene un hijo
+		// Swap con el hijo, ya sea derecho o izquierdo
+		// Borramos al hijo con el que se hizo swap. Podemos hacer null a ambos hijos
 		return null;
 	}
 
