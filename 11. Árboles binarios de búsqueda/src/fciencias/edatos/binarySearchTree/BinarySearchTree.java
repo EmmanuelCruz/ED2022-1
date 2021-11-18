@@ -108,6 +108,9 @@ public class BinarySearchTree<K extends Comparable<K>, T> implements TDABinarySe
 
 	@Override
 	public T findMin(){
+		// Verificar que no sea vacío -> return null
+		// Mientras sí tenga hijo izquierdo -> Que actual se mueva al izquierdo
+		// Ya encontramos al nodo con clave menor
 		return null;
 	}
 
@@ -117,7 +120,11 @@ public class BinarySearchTree<K extends Comparable<K>, T> implements TDABinarySe
 	}
 
 	@Override
-	public void preorden(){}
+	public void preorden(){
+		// Primero verifica la raiz
+		// Aplica preorden al izquierdo
+		// Aplica preorden al derecho
+	}
 
 	@Override
 	public void inorden(){}
