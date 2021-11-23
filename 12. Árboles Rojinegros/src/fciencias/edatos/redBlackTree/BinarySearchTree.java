@@ -1,4 +1,4 @@
-package fciencias.edatos.redBlackTree;
+package fciencias.edatos.binarySearchTree;
 
 /**
 * Implementación de un árbol binario de busqueda.
