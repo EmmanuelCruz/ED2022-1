@@ -25,6 +25,7 @@ código de las clases de laboratorio de Estructuras de Datos
 10. Árboles generales: Implementación de un árbol, así como recorrido en preorden y postorden.
 11. Árboles binarios de búsqueda: Implementación para la introducción a BST.
 12. Árboles rojinegros: Introducción a la implementación de un árbol rojinegro.
+13. Árboles AVL: Introducción a la implementación de un árbol AVL.
 
 ----
 
