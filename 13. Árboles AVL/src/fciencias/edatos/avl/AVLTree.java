@@ -75,6 +75,31 @@ public class AVLTree<K extends Comparable, T> implements TDABinarySearchTree<K, 
 		return null;
 	}
 
+	/**
+	 * Obtenia el nodo con una clave específica.
+	 * @param k la clave a buscar
+	 * @param actual el nodo actual
+	 * @return el nodo con clave k o null si no existe.
+	 */
+	private AVLNode retrieve(K k, AVLNode actual){
+		// Verificamos que actual es null
+		if(actual == null)
+			return null;
+
+		int compare = k.compareTo(actual.clave);
+
+		// Si existe el elemento
+		if(compare == 0){
+			return actual;
+		}
+
+		if(compare < 0){ // Caso del hijo izquiero
+			return retrieve(k, actual.izquierdo);
+		} else { // Caso del hijo derecho
+			return retrieve(k, actual.derecho);
+		}
+	}
+
 	@Override
 	public void insert(T e, K k){
 		if(raiz == null){ // Arbol vacío
@@ -84,6 +109,7 @@ public class AVLTree<K extends Comparable, T> implements TDABinarySearchTree<K, 
 		AVLNode v = insert(e, k, raiz);
 
 		// Rebalancear a partir de v hasta raiz
+		//rebalancea(v);
 	}
 
 	/**
@@ -113,12 +139,74 @@ public class AVLTree<K extends Comparable, T> implements TDABinarySearchTree<K, 
 
 	@Override
 	public T delete(K k){
-		return null;
+		AVLNode v = retrieve(k, raiz);
+
+		// El elemento que queremos eliminar no está en el árbol
+		if(v == null){
+			return null;
+		}
+
+		T eliminado = v.elemento;
+
+		// Eliminar con auxiliar
+		AVLNode w = delete(v);
+
+		// Rebalancear
+		//rebalancea(w);
+
+		return eliminado;
+	}
+
+	private AVLNode delete(AVLNode v){
+		if(v.izquierdo!=null && v.derecho!=null){ // Tiene dos hijos
+			AVLNode menor = findMin(v.derecho);
+			swap(menor, v);
+			return delete(menor);
+		} else if(v.izquierdo==null && v.derecho==null){ // No tiene hijos
+			boolean esIzquierdo = v.padre.izquierdo==v;
+			if(esIzquierdo){
+				v.padre.izquierdo = null;
+			} else{
+				v.padre.derecho = null;
+			}
+			return v.padre;
+		} else{ // Sólo tiene un hijo
+			boolean hijoIzquierdo = v.izquierdo!=null;
+			if(hijoIzquierdo){
+				swap(v, v.izquierdo);
+				return delete(v.izquierdo);
+			} else{
+				swap(v, v.derecho);
+				return delete(v.derecho);
+			}
+		}
 	}
 
 	@Override
 	public T findMin(){
 		return null;
+	}
+
+	private void swap(AVLNode v, AVLNode w){
+		T value = v.elemento;
+		K clave = v.clave;
+		v.elemento = w.elemento;
+		v.clave = w.clave;
+		w.elemento = value;
+		w.clave = clave;
+	}
+
+	private AVLNode findMin(AVLNode actual){
+		if(actual == null)
+			return null;
+		AVLNode iterador = actual;
+
+		while(iterador.izquierdo != null){
+			iterador = actual.izquierdo;
+		}
+
+		return iterador;
+
 	}
 
 	@Override
@@ -127,7 +215,18 @@ public class AVLTree<K extends Comparable, T> implements TDABinarySearchTree<K, 
 	}
 
 	@Override
-	public void preorden(){}
+	public void preorden(){
+		preorden(raiz);
+	}
+
+	private void preorden(AVLNode actual){
+		if(actual==null)
+			return;
+
+		System.out.println(actual.elemento);
+		preorden(actual.izquierdo);
+		preorden(actual.derecho);
+	}
 
 	@Override
 	public void inorden(){}
@@ -136,6 +235,23 @@ public class AVLTree<K extends Comparable, T> implements TDABinarySearchTree<K, 
 	public void postorden(){}
 
 	public static void main(String[] args) {
+		AVLTree<Integer, Integer> arbol = new AVLTree<>();
 
+		arbol.insert(9, 9);
+		arbol.insert(12, 12);
+		arbol.insert(3, 3);
+		arbol.insert(4, 4);
+		arbol.insert(2, 2);
+		arbol.insert(5, 5);
+		arbol.insert(1, 1);
+		arbol.insert(11, 11);
+		arbol.insert(14, 14);
+		arbol.insert(15, 15);
+
+		arbol.delete(9);
+		arbol.delete(12);
+		arbol.delete(5);
+
+		arbol.preorden();
 	}
 }
