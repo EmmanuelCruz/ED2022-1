@@ -26,6 +26,7 @@ código de las clases de laboratorio de Estructuras de Datos
 11. Árboles binarios de búsqueda: Implementación para la introducción a BST.
 12. Árboles rojinegros: Introducción a la implementación de un árbol rojinegro.
 13. Árboles AVL: Introducción a la implementación de un árbol AVL.
+14. Heaps: implementación de un Max Heap.
 
 ----
 
