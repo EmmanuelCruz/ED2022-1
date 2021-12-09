@@ -16,12 +16,25 @@ public class MaxHeap<K extends Comparable>{
 	/** Siguiente posición disponible. */
 	private int pos;
 
+	/** Cantidad de elementos por default. */
+	private final int MAX = 100;
+
 	/**
 	 * Crea un MaxHeap
 	 * @param length la cantidad de elementos.
 	 */
 	public MaxHeap(int length){
-		arbol = (K[]) new Comparable[length];
+		if(length<=0)
+			arbol = (K[]) new Comparable[MAX];
+		else
+			arbol = (K[]) new Comparable[length];
+	}
+
+	/**
+	 * Crea un MaxHeap
+	 */
+	public MaxHeap(){
+		arbol = (K[]) new Comparable[MAX];
 	}
 
 	/**
@@ -86,6 +99,7 @@ public class MaxHeap<K extends Comparable>{
 	/**
 	 * Preorden
 	 * @param posicion del elemento
+	 * @param space la cantidad de espacio entre hijos
 	 */
 	private void preorden(int posicion, String space){
 		// Si el nodo no existe
@@ -105,11 +119,67 @@ public class MaxHeap<K extends Comparable>{
 
 	/**
 	 * Elimina un elemento del heap.
-	 * @param k la clave del elemento a eliminar.
 	 * @return el elemento eliminado.
 	 */
-	public K delete(K k){
-		return null;
+	public K delete(){
+		// Verificamos que no sea vacío
+		if(arbol[0] == null)
+			return null;
+
+		// Almacenamos el elemento que se va a eliminar
+		K eliminado = arbol[0];
+
+		// Intercambiamos la raíz con el último insertado
+		swap(0, pos-1);
+
+		// Eliminamos la hoja
+		arbol[pos-1] = null;
+		pos--;
+
+		// Reacomodar hacia abajo
+		reacomodaAbajo(0);
+
+		return eliminado;
+	}
+
+	/**
+	 * Reacomoda un elemento desde la raíz hasta las hojas.
+	 * @param posicion la posicion del elemento a reacomodar.
+	 */
+	private void reacomodaAbajo(int posicion){
+		int i = posicion;
+		int izquierdo = 2*i + 1;
+		int derecho = 2*i + 2;
+
+		// Mientras tenga hijos
+		while(izquierdo < arbol.length && arbol[izquierdo]!=null){
+			// Si tiene un solo hijo
+			if(arbol[derecho]==null){
+
+				// El padre es mayor a su izquierdo
+				if(arbol[i].compareTo(arbol[izquierdo]) >= 0)
+					return;
+
+				swap(i, izquierdo);
+
+				i = izquierdo;
+
+			} else{ // Tiene dos hijos
+				if(arbol[i].compareTo(arbol[izquierdo]) >= 0 && 
+					arbol[i].compareTo(arbol[derecho]) >= 0)
+					return;
+
+				if(arbol[izquierdo].compareTo(arbol[derecho]) > 0){ // El izquierdo es mayor
+					swap(i, izquierdo);
+					i = izquierdo;
+				} else{ // El derecho es el mayor
+					swap(i, derecho);
+					i = derecho;
+				}
+			}
+			izquierdo = 2*i + 1;
+			derecho = 2*i + 2;
+		}
 	}
 
 	/**
@@ -117,12 +187,14 @@ public class MaxHeap<K extends Comparable>{
 	 * @return el elemento con clave mayor.
 	 */
 	public K get(){
-		return null;
+		if(arbol[0]==null)
+			return null;
+		return arbol[0];
 	}
 
 	public static void main(String[] args) {
-		MaxHeap<Integer> maxHeap = new MaxHeap<>(10);
-		
+		MaxHeap<Integer> maxHeap = new MaxHeap<>(15);
+
 		maxHeap.insert(50);
 		maxHeap.insert(60);
 		maxHeap.insert(70);
@@ -131,7 +203,14 @@ public class MaxHeap<K extends Comparable>{
 		maxHeap.insert(200);
 		maxHeap.insert(8);
 		maxHeap.insert(45);
+		maxHeap.insert(5);
+		maxHeap.insert(250);
+
+		maxHeap.delete();
+		maxHeap.delete();
+		System.out.println("Resultado del delete: " + maxHeap.delete());
 
 		maxHeap.preorden();
+
 	}
 }
