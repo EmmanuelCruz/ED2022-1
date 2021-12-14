@@ -6,6 +6,9 @@
 ### Descripción
 Implementación de un Max Heap o montículo máximo.
 
+
+Implementación de heapSort.
+
 ----
 
 ### Implementaciones
