@@ -8,7 +8,7 @@ import java.util.Random;
 * @version 2.0 Enero 2022. Anterior 1.0 Enero 2021.
 * @since Estructuras de Datos 2022-1.
 */
-public abstract class AbstractHashMap<K,V> implements Map<K,V>{
+public class AbstractHashMap<K,V> implements Map<K,V>{
 
 	/** Arreglo de elementos. */
 	private V[] table;
@@ -77,7 +77,17 @@ public abstract class AbstractHashMap<K,V> implements Map<K,V>{
 	}
 
 	public static void main(String[] args) {
-		
+		Integer cinco = new Integer(5);
+		System.out.println(cinco.hashCode());
+		String hola = "Hola";
+		String hola2 = "Hola";
+
+		System.out.println(hola.hashCode());
+		System.out.println(hola2.hashCode());
+
+		AbstractHashMap<String, String> map = new AbstractHashMap<>();
+		System.out.println("Hash code map: " + map.hashCode());
+
 	}
 
 }
