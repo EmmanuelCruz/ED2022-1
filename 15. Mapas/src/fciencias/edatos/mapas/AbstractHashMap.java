@@ -53,40 +53,72 @@ public class AbstractHashMap<K,V> implements Map<K,V>{
 
 	@Override
 	public int size(){
+		// Tarea moral
 		return 0;
 	}
 
 	@Override
 	public V get(K key){
-		return null;
+		int pos = hashFuction(key);
+		return table[pos];
 	}
 
 	@Override
 	public V put(K key, V value){
-		return null;
+		int pos = hashFuction(key);
+		System.out.println("Valor: "+value+"\nPosicion: "+pos);
+		V oldValue = table[pos];
+		table[pos] = value;
+		return oldValue;
 	}
 
 	@Override
 	public V remove(K key){
-		return null;
+		int pos = hashFuction(key);
+		V oldValue = table[pos];
+		table[pos] = null;
+		return oldValue;
 	}
 
 	@Override
 	public boolean isEmpty(){
+		// Tarea moral
 		return false;
 	}
 
+	/**
+	 * Funcion hash
+	 * @param k la clave
+	 * @return un entero asociado a la clave dentro de un rango válido
+	 */
+	private int hashFuction(K k){
+		int hashCode = k.hashCode();
+		return (int) (Math.abs(hashCode)%capacity);
+	}
+
 	public static void main(String[] args) {
-		Integer cinco = new Integer(5);
-		System.out.println(cinco.hashCode());
-		String hola = "Hola";
-		String hola2 = "Hola";
+		Map<String, String> map = new AbstractHashMap<>();
+		
+		// Put
+		map.put("Cadena", "Cadena");
+		map.put("Hola", "Hola");
+		map.put("Mundo", "Mundo");
+		map.put("Fanatica", "Fanatica");
+		map.put("Parangaricutirimicuaro", "Parangaricutirimicuaro");
+		map.put("Spiderman", "Spiderman");
+		map.put("De lo sensual", "De lo sensual");
 
-		System.out.println(hola.hashCode());
-		System.out.println(hola2.hashCode());
+		String k1 = "Parangaricutirimicuaro";
+		String k2 = "No existe esta cadena";
+		String k3 = "Spiderman";
 
-		AbstractHashMap<String, String> map = new AbstractHashMap<>();
-		System.out.println("Hash code map: " + map.hashCode());
+		// Remove
+		map.remove(k3);
+
+		// Get
+		System.out.println("Obtenemos el valor asociado a "+k1+": "+map.get(k1));
+		System.out.println("Obtenemos el valor asociado a "+k2+": "+map.get(k2));
+		System.out.println("Obtenemos el valor asociado a "+k3+": "+map.get(k3));
 
 	}
 
