@@ -92,12 +92,12 @@ public class AbstractHashMap<K,V> implements Map<K,V>{
 	 * @return un entero asociado a la clave dentro de un rango válido
 	 */
 	private int hashFuction(K k){
-		int hashCode = k.hashCode();
-		return (int) (Math.abs(hashCode)%capacity);
+		int hashCode = (int) (Math.abs(k.hashCode() * scale + shift) % prime);
+		return hashCode % capacity;
 	}
 
 	public static void main(String[] args) {
-		Map<String, String> map = new AbstractHashMap<>();
+		Map<String, String> map = new AbstractHashMap<>(97);
 		
 		// Put
 		map.put("Cadena", "Cadena");
