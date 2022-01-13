@@ -41,6 +41,7 @@ Descripción y recursos para las prácticas
 * Práctica 4: Algoritmos de ordenamiento
 * Práctica 5: Árboles Binarios de Búsqueda
 * Práctica 6: Árboles AVL
+* Práctica 7: Tablas de dispersión
 
 ----
 
