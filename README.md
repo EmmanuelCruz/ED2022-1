@@ -28,6 +28,7 @@ código de las clases de laboratorio de Estructuras de Datos
 13. Árboles AVL: Introducción a la implementación de un árbol AVL.
 14. Heaps: implementación de un Max Heap.
 15. Mapas: implementación básica de un Mapa.
+16. Gráficas: implementación básica de una gráfica basada en listas.
 
 ----
 
