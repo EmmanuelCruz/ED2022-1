@@ -29,6 +29,7 @@ código de las clases de laboratorio de Estructuras de Datos
 14. Heaps: implementación de un Max Heap.
 15. Mapas: implementación básica de un Mapa.
 16. Gráficas: implementación básica de una gráfica basada en listas.
+17. Threads: ejemplo básico del uso de threads.
 
 ----
 
